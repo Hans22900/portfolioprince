@@ -3,118 +3,113 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Prince HOULONON — Cybersécurité & Infrastructure</title>
-<meta name="description" content="Prince HOULONON — Ingénieur Sécurité des Systèmes & Réseaux. SOC/SIEM, réseau, développement et administration systèmes. Cotonou, Bénin.">
+<title>Prince HOULONON — SOC Analyst & Cybersécurité</title>
+<meta name="description" content="Prince HOULONON — SOC Analyst, Cyber Analyste, Administrateur Système & Réseau. Blue Team & Red Team. Certifié CSOA, CCSP-AWS, CNSP, CBTP. Cotonou, Bénin.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#070b10; --bg2:#0b1119; --surface:#0f1620; --surface2:#131d29; --line:#1d2a39;
-    --ink:#e7eef6; --ink2:#aebbcb; --muted:#73839a;
-    --acc:#34e39a; --acc2:#39c6ff; --acc-ink:#0a1f17;
-    --radius:14px; --max:1080px;
+    --bg:#070b10;--bg2:#0b1119;--surface:#0f1620;--surface2:#131d29;--line:#1d2a39;
+    --ink:#e7eef6;--ink2:#aebbcb;--muted:#73839a;
+    --acc:#34e39a;--acc2:#39c6ff;--acc-ink:#0a1f17;
+    --radius:14px;--max:1080px;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   html.js .reveal{opacity:0;transform:translateY(14px)}
   html.js .reveal.in{opacity:1;transform:none;transition:opacity .6s ease,transform .6s ease}
-  @media (prefers-reduced-motion:reduce){ html.js .reveal{opacity:1!important;transform:none!important} html{scroll-behavior:auto} }
+  @media (prefers-reduced-motion:reduce){html.js .reveal{opacity:1!important;transform:none!important}html{scroll-behavior:auto}}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:"Space Grotesk",system-ui,Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;
     background-image:radial-gradient(1200px 500px at 80% -10%,rgba(52,227,154,.09),transparent 60%),radial-gradient(900px 500px at -10% 10%,rgba(57,198,255,.06),transparent 55%)}
-  a{color:var(--acc);text-decoration:none}
-  a:hover{text-decoration:underline}
+  a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
   .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
-  .mono{font-family:"JetBrains Mono",ui-monospace,monospace}
-  .cmd{font-family:"JetBrains Mono",monospace;color:var(--acc);font-size:.82rem;letter-spacing:.02em}
+  .cmd{font-family:"JetBrains Mono",monospace;color:var(--acc);font-size:.78rem;letter-spacing:.08em;margin-bottom:10px}
   .cmd::before{content:"$ ";opacity:.6}
 
   header{position:sticky;top:0;z-index:30;background:rgba(7,11,16,.72);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-  .nav{display:flex;align-items:center;gap:18px;height:60px}
-  .brand{font-family:"JetBrains Mono",monospace;font-weight:700;letter-spacing:-.01em}
-  .brand b{color:var(--acc)}
-  .links{margin-left:auto;display:flex;gap:20px;align-items:center}
-  .links a{color:var(--ink2);font-weight:500;font-size:.92rem}
-  .links a:hover{color:var(--acc);text-decoration:none}
-  .lang{border:1px solid var(--line);background:var(--surface);color:var(--ink2);font:700 .78rem "JetBrains Mono",monospace;padding:6px 11px;border-radius:8px;cursor:pointer}
+  .nav{display:flex;align-items:center;gap:16px;height:58px}
+  .brand{font-family:"JetBrains Mono",monospace;font-weight:700}.brand b{color:var(--acc)}
+  .links{margin-left:auto;display:flex;gap:17px;align-items:center}
+  .links a{color:var(--ink2);font-weight:500;font-size:.88rem}.links a:hover{color:var(--acc);text-decoration:none}
+  .lang{border:1px solid var(--line);background:var(--surface);color:var(--ink2);font:700 .76rem "JetBrains Mono",monospace;padding:6px 10px;border-radius:8px;cursor:pointer}
   .lang:hover{border-color:var(--acc);color:var(--acc)}
-  @media(max-width:780px){ .links a:not(.lang){display:none} }
+  @media(max-width:900px){.links a:not(.lang){display:none}}
 
-  section{padding:76px 0;border-top:1px solid var(--line)}
-  .kick{font-family:"JetBrains Mono",monospace;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:10px}
-  h2.sec{font-size:clamp(1.5rem,3.4vw,2.05rem);letter-spacing:-.02em;margin:0 0 6px}
-  .sub{color:var(--muted);margin:0 0 34px;max-width:60ch}
+  section{padding:70px 0;border-top:1px solid var(--line)}
+  h2.sec{font-size:clamp(1.45rem,3.3vw,2rem);letter-spacing:-.02em;margin:0 0 6px}
+  .sub{color:var(--muted);margin:0 0 30px;max-width:64ch}
 
-  /* HERO */
-  .hero{padding:96px 0 72px;border-top:0}
-  .badge{display:inline-flex;align-items:center;gap:9px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);background:var(--surface);border:1px solid var(--line);padding:7px 13px;border-radius:999px}
-  .dotpulse{width:8px;height:8px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 0 rgba(52,227,154,.6);animation:pulse 2.4s infinite}
+  .hero{padding:92px 0 64px;border-top:0}
+  .badge{display:inline-flex;align-items:center;gap:9px;font-family:"JetBrains Mono",monospace;font-size:.78rem;color:var(--ink2);background:var(--surface);border:1px solid var(--line);padding:7px 13px;border-radius:999px}
+  .dotpulse{width:8px;height:8px;border-radius:50%;background:var(--acc);animation:pulse 2.4s infinite}
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(52,227,154,.5)}70%{box-shadow:0 0 0 9px rgba(52,227,154,0)}100%{box-shadow:0 0 0 0 rgba(52,227,154,0)}}
-  .hero h1{font-size:clamp(2.3rem,6vw,3.6rem);line-height:1.04;letter-spacing:-.03em;margin:22px 0 6px;text-wrap:balance}
+  .hero h1{font-size:clamp(2.1rem,5.5vw,3.3rem);line-height:1.05;letter-spacing:-.03em;margin:22px 0 8px;text-wrap:balance}
   .hero h1 .g{background:linear-gradient(100deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .hero .role{font-family:"JetBrains Mono",monospace;color:var(--ink2);font-size:clamp(.95rem,2.2vw,1.15rem);margin:0}
-  .hero p.lead{max-width:60ch;color:var(--ink2);font-size:1.06rem;margin:20px 0 0}
-  .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:10px;font-weight:600;font-size:.95rem;border:1px solid var(--line);font-family:"JetBrains Mono",monospace}
-  .btn.primary{background:var(--acc);color:var(--acc-ink);border-color:var(--acc)}
-  .btn.primary:hover{filter:brightness(1.08);text-decoration:none}
-  .btn.ghost{background:var(--surface);color:var(--ink)}
-  .btn.ghost:hover{border-color:var(--acc);color:var(--acc);text-decoration:none}
-  .stats{display:flex;gap:14px;flex-wrap:wrap;margin-top:40px}
+  .hero .role{font-family:"JetBrains Mono",monospace;color:var(--ink2);font-size:clamp(.9rem,2vw,1.08rem);margin:0}
+  .hero p.lead{max-width:66ch;color:var(--ink2);font-size:1.04rem;margin:20px 0 0}
+  .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:10px;font-weight:600;font-size:.93rem;border:1px solid var(--line);font-family:"JetBrains Mono",monospace}
+  .btn.primary{background:var(--acc);color:var(--acc-ink);border-color:var(--acc)}.btn.primary:hover{filter:brightness(1.08);text-decoration:none}
+  .btn.ghost{background:var(--surface);color:var(--ink)}.btn.ghost:hover{border-color:var(--acc);color:var(--acc);text-decoration:none}
+  .stats{display:flex;gap:14px;flex-wrap:wrap;margin-top:38px}
   .stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px;min-width:150px;flex:1}
-  .stat .n{font-family:"JetBrains Mono",monospace;font-weight:700;color:var(--acc);font-size:1.05rem}
-  .stat .l{color:var(--muted);font-size:.84rem;margin-top:2px}
+  .stat .n{font-family:"JetBrains Mono",monospace;font-weight:700;color:var(--acc);font-size:1rem}
+  .stat .l{color:var(--muted);font-size:.82rem;margin-top:2px}
 
-  /* ABOUT */
-  .about p{color:var(--ink2);margin:0 0 14px;max-width:72ch}
-  .about p b{color:var(--ink)}
+  .about p{color:var(--ink2);margin:0 0 14px;max-width:76ch}.about b{color:var(--ink)}
 
-  /* SKILLS */
   .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
   .box{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
   .box:hover{border-color:#2b3e52}
-  .box h3{margin:0 0 12px;font-size:1rem;display:flex;align-items:center;gap:9px;font-family:"JetBrains Mono",monospace}
+  .box h3{margin:0 0 12px;font-size:.98rem;display:flex;align-items:center;gap:9px;font-family:"JetBrains Mono",monospace}
   .box h3 .sq{width:9px;height:9px;background:var(--acc);border-radius:2px;box-shadow:0 0 10px var(--acc)}
   .chips{display:flex;flex-wrap:wrap;gap:7px}
-  .chip{font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);background:var(--bg2);border:1px solid var(--line);padding:4px 10px;border-radius:7px}
-  @media(max-width:860px){ .grid{grid-template-columns:repeat(2,1fr)} }
-  @media(max-width:560px){ .grid{grid-template-columns:1fr} }
+  .chip{font-family:"JetBrains Mono",monospace;font-size:.78rem;color:var(--ink2);background:var(--bg2);border:1px solid var(--line);padding:4px 9px;border-radius:7px}
+  @media(max-width:860px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.grid{grid-template-columns:1fr}}
 
-  /* TIMELINE */
+  .certs{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .cert{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:flex;gap:14px;align-items:flex-start}
+  .cert .ic{flex:0 0 auto;width:38px;height:38px;border-radius:9px;background:var(--bg2);border:1px solid var(--line);display:grid;place-items:center;color:var(--acc);font-family:"JetBrains Mono",monospace;font-weight:700;font-size:.9rem}
+  .cert h3{margin:0 0 3px;font-size:.98rem;line-height:1.3}
+  .cert .meta{font-family:"JetBrains Mono",monospace;font-size:.76rem;color:var(--muted)}
+  .cert .merit{display:inline-block;margin-top:5px;font-family:"JetBrains Mono",monospace;font-size:.7rem;color:var(--acc2);border:1px solid #1f3b52;background:rgba(57,198,255,.08);padding:2px 7px;border-radius:6px}
+  @media(max-width:720px){.certs{grid-template-columns:1fr}}
+
   .tl{position:relative;padding-left:26px}
   .tl::before{content:"";position:absolute;left:7px;top:4px;bottom:4px;width:2px;background:linear-gradient(var(--acc),transparent)}
   .tl .item{position:relative;padding:0 0 26px}
   .tl .item::before{content:"";position:absolute;left:-23px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--acc)}
-  .tl .when{font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--acc)}
-  .tl h3{margin:4px 0 2px;font-size:1.08rem}
-  .tl .org{color:var(--ink2);font-weight:500;font-size:.95rem}
-  .tl p{margin:8px 0 0;color:var(--muted);font-size:.95rem;max-width:68ch}
+  .tl .when{font-family:"JetBrains Mono",monospace;font-size:.78rem;color:var(--acc)}
+  .tl h3{margin:4px 0 2px;font-size:1.05rem}
+  .tl .org{color:var(--ink2);font-weight:500;font-size:.92rem}
+  .tl ul{margin:10px 0 0;padding-left:18px;color:var(--muted)}
+  .tl ul li{margin:4px 0;font-size:.93rem}
+  .tl ul li b{color:var(--ink2)}
 
-  /* PROJECTS */
   .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;display:flex;flex-direction:column}
   .card:hover{border-color:#2b3e52;box-shadow:0 10px 30px rgba(0,0,0,.25)}
-  .card .tag{font-family:"JetBrains Mono",monospace;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--acc2)}
-  .card h3{margin:8px 0 8px;font-size:1.1rem;letter-spacing:-.01em}
-  .card p{margin:0 0 16px;color:var(--ink2);font-size:.95rem}
+  .card .tag{font-family:"JetBrains Mono",monospace;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--acc2)}
+  .card h3{margin:7px 0 7px;font-size:1.05rem;letter-spacing:-.01em}
+  .card ul{margin:0 0 14px;padding-left:17px;color:var(--ink2);font-size:.92rem}
+  .card ul li{margin:3px 0}
   .card .stack{margin-top:auto;display:flex;flex-wrap:wrap;gap:6px}
-  .card .stack span{font-family:"JetBrains Mono",monospace;font-size:.76rem;color:var(--muted);border:1px solid var(--line);padding:3px 8px;border-radius:6px}
-  @media(max-width:720px){ .projects{grid-template-columns:1fr} }
+  .card .stack span{font-family:"JetBrains Mono",monospace;font-size:.74rem;color:var(--muted);border:1px solid var(--line);padding:3px 8px;border-radius:6px}
+  @media(max-width:720px){.projects{grid-template-columns:1fr}}
 
-  /* CONTACT terminal */
   .term{background:#060a0e;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35)}
   .term .bar{display:flex;align-items:center;gap:7px;padding:11px 14px;background:var(--surface);border-bottom:1px solid var(--line)}
   .term .bar i{width:11px;height:11px;border-radius:50%;display:inline-block}
   .term .bar .r{background:#ff5f56}.term .bar .y{background:#ffbd2e}.term .bar .g{background:#27c93f}
   .term .bar span{margin-left:8px;font-family:"JetBrains Mono",monospace;font-size:.78rem;color:var(--muted)}
-  .term .body{padding:22px;font-family:"JetBrains Mono",monospace;font-size:.92rem;line-height:1.9}
-  .term .p{color:var(--acc)}.term .p::before{content:"prince@portfolio:~$ ";color:var(--muted)}
-  .term .o{color:var(--ink2);padding-left:0}
-  .term .o .k{color:var(--acc2)}
-  .term a{color:var(--acc)}
+  .term .body{padding:22px;font-family:"JetBrains Mono",monospace;font-size:.9rem;line-height:1.9;overflow-x:auto}
+  .term .p::before{content:"prince@soc:~$ ";color:var(--muted)}.term .p{color:var(--acc)}
+  .term .o{color:var(--ink2)}.term .o .k{color:var(--acc2)}
 
-  footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-family:"JetBrains Mono",monospace;font-size:.82rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-  .draft{background:rgba(57,198,255,.08);border:1px solid #1f3b52;color:#9fd4f0;border-radius:10px;padding:10px 14px;font-size:.85rem;margin-top:18px;font-family:"JetBrains Mono",monospace}
+  footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-family:"JetBrains Mono",monospace;font-size:.82rem}
+  .langline{display:flex;gap:24px;flex-wrap:wrap;color:var(--ink2);font-family:"JetBrains Mono",monospace;font-size:.86rem}
   [hidden]{display:none!important}
 </style>
 </head>
@@ -123,12 +118,15 @@
   <div class="wrap nav">
     <div class="brand">prince<b>_houlonon</b></div>
     <nav class="links">
-      <a href="#about" data-fr="À propos" data-en="About">À propos</a>
+      <a href="#about" data-fr="Profil" data-en="Profile">Profil</a>
       <a href="#skills" data-fr="Compétences" data-en="Skills">Compétences</a>
-      <a href="#path" data-fr="Parcours" data-en="Path">Parcours</a>
+      <a href="#certs" data-fr="Certifications" data-en="Certifications">Certifications</a>
+      <a href="#xp" data-fr="Expériences" data-en="Experience">Expériences</a>
+      <a href="#edu" data-fr="Formation" data-en="Education">Formation</a>
       <a href="#projects" data-fr="Projets" data-en="Projects">Projets</a>
+      <a href="#web">CERRHUD</a>
       <a href="#contact">Contact</a>
-      <button class="lang" id="lang" aria-label="language">EN</button>
+      <button class="lang" id="lang">EN</button>
     </nav>
   </div>
 </header>
@@ -137,92 +135,181 @@
   <!-- HERO -->
   <section class="hero">
     <div class="wrap">
-      <div class="badge"><span class="dotpulse"></span><span data-fr="En poste · Cybersécurité &amp; Infrastructure" data-en="Working · Cybersecurity &amp; Infrastructure">En poste · Cybersécurité &amp; Infrastructure</span></div>
-      <h1><span data-fr="Je sécurise et je fais tourner des " data-en="I secure and operate ">Je sécurise et je fais tourner des </span><span class="g" data-fr="systèmes d'information." data-en="information systems.">systèmes d'information.</span></h1>
-      <p class="role">Prince HOULONON — <span data-fr="Ingénieur Sécurité des Systèmes &amp; Réseaux" data-en="Systems &amp; Network Security Engineer">Ingénieur Sécurité des Systèmes &amp; Réseaux</span></p>
-      <p class="lead" data-fr="SOC/SIEM, réseaux multi-sites, développement et intégration d'applications, administration systèmes & cloud. Je détecte, je durcis, j'automatise — et je garde l'ensemble fiable." data-en="SOC/SIEM, multi-site networks, application development and integration, systems & cloud administration. I detect, harden, automate — and keep it all reliable.">SOC/SIEM, réseaux multi-sites, développement et intégration d'applications, administration systèmes & cloud. Je détecte, je durcis, j'automatise — et je garde l'ensemble fiable.</p>
+      <div class="badge"><span class="dotpulse"></span>SOC Analyst · Blue Team &amp; Red Team</div>
+      <h1>Prince <span class="g">HOULONON</span></h1>
+      <p class="role">SOC Analyst | <span data-fr="Cyber Analyste" data-en="Cyber Analyst">Cyber Analyste</span> | <span data-fr="Administrateur Système &amp; Réseau" data-en="System &amp; Network Administrator">Administrateur Système &amp; Réseau</span></p>
+      <p class="lead" data-fr="Double expertise défense (Blue Team) et attaque (Red Team), avec une solide maîtrise de l'administration système & réseau. Je détecte, j'investigue, je durcis et je sécurise les infrastructures critiques." data-en="Dual expertise in defense (Blue Team) and offense (Red Team), with strong systems & network administration skills. I detect, investigate, harden and secure critical infrastructures.">Double expertise défense (Blue Team) et attaque (Red Team), avec une solide maîtrise de l'administration système & réseau. Je détecte, j'investigue, je durcis et je sécurise les infrastructures critiques.</p>
       <div class="cta">
         <a class="btn primary" href="#projects" data-fr="./voir-projets" data-en="./view-projects">./voir-projets</a>
         <a class="btn ghost" href="#contact" data-fr="me contacter" data-en="contact me">me contacter</a>
       </div>
       <div class="stats">
+        <div class="stat"><div class="n">CSOA · CNSP · CBTP</div><div class="l" data-fr="Certifié SOC & Blue Team" data-en="SOC & Blue Team certified">Certifié SOC & Blue Team</div></div>
         <div class="stat"><div class="n">Licence Pro SSRI</div><div class="l" data-fr="Mention Bien · 2025" data-en="Honors · 2025">Mention Bien · 2025</div></div>
-        <div class="stat"><div class="n">SOC / SIEM</div><div class="l" data-fr="Wazuh en production" data-en="Wazuh in production">Wazuh en production</div></div>
         <div class="stat"><div class="n">Cotonou, Bénin</div><div class="l" data-fr="Disponible" data-en="Available">Disponible</div></div>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT -->
+  <!-- PROFIL -->
   <section id="about">
     <div class="wrap about reveal">
-      <div class="kick cmd" data-fr="cat a-propos.md" data-en="cat about.md">cat a-propos.md</div>
-      <h2 class="sec" data-fr="À propos" data-en="About">À propos</h2>
-      <p data-fr="Diplômé d'une <b>Licence Professionnelle en Sécurité des Systèmes et Réseaux Informatiques (SSRI)</b>, je pilote aujourd'hui l'ensemble du système d'information d'un centre de recherche en santé : du réseau et des serveurs jusqu'aux applications métier et à leur sécurité." data-en="Holding a <b>Professional Bachelor's in Information Systems & Network Security (SSRI)</b>, I now run the entire information system of a health research center — from networks and servers to business applications and their security.">Diplômé d'une <b>Licence Professionnelle en Sécurité des Systèmes et Réseaux Informatiques (SSRI)</b>, je pilote aujourd'hui l'ensemble du système d'information d'un centre de recherche en santé : du réseau et des serveurs jusqu'aux applications métier et à leur sécurité.</p>
-      <p data-fr="Mon approche est pragmatique : comprendre le besoin, bâtir une solution robuste, l'<b>automatiser</b> et la <b>surveiller</b>. J'aime autant déployer un SIEM et chasser les menaces que développer une application, câbler un VPN entre plusieurs sites ou intégrer une IA interne. La sécurité est présente à chaque étape, pas après coup." data-en="My approach is pragmatic: understand the need, build something robust, <b>automate</b> it and <b>monitor</b> it. I enjoy deploying a SIEM and hunting threats as much as building an app, wiring a VPN across sites or integrating an internal AI. Security is built in at every step, not bolted on afterward.">Mon approche est pragmatique : comprendre le besoin, bâtir une solution robuste, l'<b>automatiser</b> et la <b>surveiller</b>. J'aime autant déployer un SIEM et chasser les menaces que développer une application, câbler un VPN entre plusieurs sites ou intégrer une IA interne. La sécurité est présente à chaque étape, pas après coup.</p>
+      <div class="cmd" data-fr="cat profil.md" data-en="cat profile.md">cat profil.md</div>
+      <h2 class="sec" data-fr="Profil" data-en="Profile">Profil</h2>
+      <p data-fr="Diplômé en <b>Sécurité des Systèmes et Réseaux</b>, je possède une double expertise technique en <b>défense (Blue Team)</b> et en <b>attaque (Red Team)</b>, complétée par une solide maîtrise de l'<b>administration réseau</b>. Certifié <b>Certified Security Operations Analyst (CSOA)</b> et <b>Blue Team Junior Analyst (BTJA)</b>, je maîtrise aussi bien la détection d'incidents (SIEM, Threat Hunting, Forensic) que les tests d'intrusion et la gestion des vulnérabilités." data-en="Graduate in <b>Information Systems & Network Security</b>, with dual technical expertise in <b>defense (Blue Team)</b> and <b>offense (Red Team)</b>, complemented by strong <b>network administration</b> skills. Certified <b>CSOA</b> and <b>BTJA</b>, I master incident detection (SIEM, Threat Hunting, Forensics) as well as penetration testing and vulnerability management.">Diplômé en <b>Sécurité des Systèmes et Réseaux</b>, je possède une double expertise technique en <b>défense (Blue Team)</b> et en <b>attaque (Red Team)</b>, complétée par une solide maîtrise de l'<b>administration réseau</b>. Certifié <b>Certified Security Operations Analyst (CSOA)</b> et <b>Blue Team Junior Analyst (BTJA)</b>, je maîtrise aussi bien la détection d'incidents (SIEM, Threat Hunting, Forensic) que les tests d'intrusion et la gestion des vulnérabilités.</p>
+      <p data-fr="Mon expérience inclut la conception d'infrastructures réseaux sécurisées, le durcissement de systèmes et la sécurité Cloud (AWS), me permettant d'adopter une vision holistique pour protéger les infrastructures critiques." data-en="My experience includes designing secure network infrastructures, systems hardening and Cloud security (AWS), giving me a holistic view to protect critical infrastructures.">Mon expérience inclut la conception d'infrastructures réseaux sécurisées, le durcissement de systèmes et la sécurité Cloud (AWS), me permettant d'adopter une vision holistique pour protéger les infrastructures critiques.</p>
     </div>
   </section>
 
-  <!-- SKILLS -->
+  <!-- COMPETENCES -->
   <section id="skills">
     <div class="wrap">
-      <div class="kick cmd reveal" data-fr="ls compétences/" data-en="ls skills/">ls compétences/</div>
-      <h2 class="sec reveal" data-fr="Compétences" data-en="Skills">Compétences</h2>
-      <p class="sub reveal" data-fr="Outils et technologies utilisés au quotidien, en production." data-en="Tools and technologies used day-to-day, in production.">Outils et technologies utilisés au quotidien, en production.</p>
+      <div class="cmd reveal" data-fr="ls compétences/" data-en="ls skills/">ls compétences/</div>
+      <h2 class="sec reveal" data-fr="Compétences techniques" data-en="Technical skills">Compétences techniques</h2>
       <div class="grid">
-        <div class="box reveal"><h3><span class="sq"></span>SOC &amp; SIEM</h3><div class="chips"><span class="chip">Wazuh</span><span class="chip">Suricata</span><span class="chip">TheHive</span><span class="chip">Cortex</span><span class="chip" data-fr="Réponse active" data-en="Active response">Réponse active</span><span class="chip">Threat hunting</span></div></div>
-        <div class="box reveal"><h3><span class="sq"></span><span data-fr="Réseau" data-en="Network">Réseau</span></h3><div class="chips"><span class="chip">MikroTik</span><span class="chip">WireGuard</span><span class="chip">OpenVPN</span><span class="chip">VLAN</span><span class="chip">CSF · ufw</span><span class="chip">nginx</span></div></div>
-        <div class="box reveal"><h3><span class="sq"></span><span data-fr="Durcissement &amp; Forensics" data-en="Hardening &amp; Forensics">Durcissement &amp; Forensics</span></h3><div class="chips"><span class="chip" data-fr="Durcissement" data-en="Hardening">Durcissement</span><span class="chip">M365 Security</span><span class="chip" data-fr="Analyse de logs" data-en="Log analysis">Analyse de logs</span><span class="chip">YARA</span><span class="chip">MITRE ATT&amp;CK</span></div></div>
-        <div class="box reveal"><h3><span class="sq"></span><span data-fr="Développement" data-en="Development">Développement</span></h3><div class="chips"><span class="chip">PHP · Laravel</span><span class="chip">Node.js</span><span class="chip">React</span><span class="chip">REST API</span><span class="chip">SSO M365</span><span class="chip">MS Graph</span></div></div>
-        <div class="box reveal"><h3><span class="sq"></span><span data-fr="Systèmes &amp; Cloud" data-en="Systems &amp; Cloud">Systèmes &amp; Cloud</span></h3><div class="chips"><span class="chip">Linux</span><span class="chip">Docker</span><span class="chip">Proxmox</span><span class="chip">cPanel</span><span class="chip">Bash · Python</span><span class="chip" data-fr="Sauvegardes" data-en="Backups">Sauvegardes</span></div></div>
-        <div class="box reveal"><h3><span class="sq"></span>CTF &amp; <span data-fr="veille" data-en="research">veille</span></h3><div class="chips"><span class="chip">CTF</span><span class="chip" data-fr="Challenges sécurité" data-en="Security challenges">Challenges sécurité</span><span class="chip">OSINT</span><span class="chip" data-fr="Veille menaces" data-en="Threat intel">Veille menaces</span></div></div>
+        <div class="box reveal"><h3><span class="sq"></span>Blue Team / SOC</h3><div class="chips"><span class="chip">Wazuh</span><span class="chip">LogRhythm</span><span class="chip">Splunk</span><span class="chip">Wallix (PAM)</span><span class="chip">Suricata</span><span class="chip">Zeek</span><span class="chip">Volatility</span><span class="chip">Autopsy</span><span class="chip">Velociraptor</span><span class="chip">Threat Hunting</span><span class="chip">MITRE ATT&amp;CK</span></div></div>
+        <div class="box reveal"><h3><span class="sq"></span>Red Team / <span data-fr="Offensif" data-en="Offensive">Offensif</span></h3><div class="chips"><span class="chip">OWASP Top 10</span><span class="chip">Burp Suite</span><span class="chip">Metasploit</span><span class="chip">Nmap</span><span class="chip">Gobuster</span><span class="chip" data-fr="Escalade de privilèges" data-en="Privilege escalation">Escalade de privilèges</span></div></div>
+        <div class="box reveal"><h3><span class="sq"></span><span data-fr="Administration &amp; Système" data-en="Administration &amp; Systems">Administration &amp; Système</span></h3><div class="chips"><span class="chip">Active Directory</span><span class="chip">Linux (Ubuntu/Debian)</span><span class="chip">Windows Server</span><span class="chip">pfSense</span><span class="chip">MikroTik</span><span class="chip">Docker</span><span class="chip">Microsoft 365</span><span class="chip">Proxmox VE</span></div></div>
+        <div class="box reveal"><h3><span class="sq"></span><span data-fr="Réseaux &amp; VPN" data-en="Networks &amp; VPN">Réseaux &amp; VPN</span></h3><div class="chips"><span class="chip">OpenVPN</span><span class="chip">IPsec</span><span class="chip">VPN Site-to-Site</span><span class="chip">VLAN</span><span class="chip" data-fr="Portails captifs" data-en="Captive portals">Portails captifs</span><span class="chip">PKI</span></div></div>
+        <div class="box reveal"><h3><span class="sq"></span>Scripting &amp; Dev</h3><div class="chips"><span class="chip">Python</span><span class="chip">Bash</span><span class="chip">PHP</span></div></div>
+        <div class="box reveal"><h3><span class="sq"></span>Cloud &amp; CTF</h3><div class="chips"><span class="chip">AWS Security</span><span class="chip">TryHackMe</span><span class="chip">Root-Me</span><span class="chip">hackerlab.bj</span></div></div>
       </div>
     </div>
   </section>
 
-  <!-- PATH -->
-  <section id="path">
+  <!-- CERTIFICATIONS -->
+  <section id="certs">
     <div class="wrap">
-      <div class="kick cmd reveal" data-fr="git log --parcours" data-en="git log --path">git log --parcours</div>
-      <h2 class="sec reveal" data-fr="Parcours" data-en="Path">Parcours</h2>
-      <p class="sub reveal" data-fr="Expérience et formation." data-en="Experience and education.">Expérience et formation.</p>
+      <div class="cmd reveal" data-fr="ls certifications/" data-en="ls certifications/">ls certifications/</div>
+      <h2 class="sec reveal" data-fr="Certifications" data-en="Certifications">Certifications</h2>
+      <p class="sub reveal" data-fr="13 certifications en cybersécurité (SOC, Blue Team, Cloud, réseau, offensif)." data-en="13 cybersecurity certifications (SOC, Blue Team, Cloud, network, offensive).">13 certifications en cybersécurité (SOC, Blue Team, Cloud, réseau, offensif).</p>
+      <div class="certs">
+        <div class="cert reveal"><div class="ic">CSOA</div><div><h3>Certified Security Operations Analyst</h3><div class="meta">Hackviser · 04/05/2026</div></div></div>
+        <div class="cert reveal"><div class="ic">AWS</div><div><h3>Certified Cloud Security Practitioner (CCSP-AWS)</h3><div class="meta">The SecOps Group · 03/2026</div><span class="merit">With Merit</span></div></div>
+        <div class="cert reveal"><div class="ic">CNSP</div><div><h3>Certified Network Security Practitioner</h3><div class="meta">The SecOps Group · 03/2026</div><span class="merit">With Merit</span></div></div>
+        <div class="cert reveal"><div class="ic">CBTP</div><div><h3>Certified Blue Team Practitioner</h3><div class="meta">The SecOps Group · 03/2026</div><span class="merit">With Merit</span></div></div>
+        <div class="cert reveal"><div class="ic">CBTP</div><div><h3>Certified Blue Teamer — Professional Mock Exam</h3><div class="meta">The SecOps Group · 03/2026</div><span class="merit">With Merit</span></div></div>
+        <div class="cert reveal"><div class="ic">CSEDP</div><div><h3>Certified Social Engineering Defense Practitioner</h3><div class="meta">The SecOps Group · 03/2026</div><span class="merit">With Merit</span></div></div>
+        <div class="cert reveal"><div class="ic">BTJA</div><div><h3>Blue Team Junior Analyst</h3><div class="meta" data-fr="Certification Blue Team" data-en="Blue Team certification">Certification Blue Team</div></div></div>
+        <div class="cert reveal"><div class="ic">CS</div><div><h3>Cyber Threat Management</h3><div class="meta">Cisco Networking Academy</div></div></div>
+        <div class="cert reveal"><div class="ic">CS</div><div><h3>Network Defense</h3><div class="meta">Cisco Networking Academy</div></div></div>
+        <div class="cert reveal"><div class="ic">CS</div><div><h3>Ethical Hacker</h3><div class="meta">Cisco Networking Academy</div></div></div>
+        <div class="cert reveal"><div class="ic">CS</div><div><h3>Junior Cybersecurity Analyst — Career Path</h3><div class="meta">Cisco Networking Academy</div></div></div>
+        <div class="cert reveal"><div class="ic">CS</div><div><h3>Endpoint Security</h3><div class="meta">Cisco Networking Academy</div></div></div>
+        <div class="cert reveal"><div class="ic">SEC</div><div><h3>Play It Safe: Manage Security Risks</h3><div class="meta" data-fr="Gestion des risques de sécurité" data-en="Security risk management">Gestion des risques de sécurité</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCES -->
+  <section id="xp">
+    <div class="wrap">
+      <div class="cmd reveal" data-fr="git log --expériences" data-en="git log --experience">git log --expériences</div>
+      <h2 class="sec reveal" data-fr="Expériences professionnelles" data-en="Professional experience">Expériences professionnelles</h2>
       <div class="tl">
         <div class="item reveal">
-          <div class="when">2026 — <span data-fr="aujourd'hui" data-en="present">aujourd'hui</span></div>
-          <h3 data-fr="Responsable Informatique &amp; Cybersécurité" data-en="IT &amp; Cybersecurity Lead">Responsable Informatique &amp; Cybersécurité</h3>
-          <div class="org" data-fr="Centre de recherche en santé — Cotonou" data-en="Health research center — Cotonou">Centre de recherche en santé — Cotonou</div>
-          <p data-fr="Pilotage complet du SI : sécurité (SIEM/SOC, réponse active), réseau multi-sites (VPN, VLAN, MikroTik), développement et intégration d'applications (SSO M365), administration systèmes/cloud, automatisation et sauvegardes." data-en="End-to-end IT ownership: security (SIEM/SOC, active response), multi-site network (VPN, VLAN, MikroTik), application development & integration (M365 SSO), systems/cloud administration, automation and backups.">Pilotage complet du SI : sécurité (SIEM/SOC, réponse active), réseau multi-sites (VPN, VLAN, MikroTik), développement et intégration d'applications (SSO M365), administration systèmes/cloud, automatisation et sauvegardes.</p>
+          <div class="when">05/2026 — <span data-fr="aujourd'hui" data-en="present">aujourd'hui</span> · Cotonou</div>
+          <h3 data-fr="Responsable de l'Administration Système &amp; Réseau" data-en="Head of System &amp; Network Administration">Responsable de l'Administration Système &amp; Réseau</h3>
+          <div class="org">CERRHUD</div>
+          <ul>
+            <li><b>Architecture &amp; sécurité réseau</b> : pare-feu MikroTik, portails captifs, interconnexion VPN site-à-site.</li>
+            <li><b>Virtualisation &amp; services web</b> : hyperviseur Proxmox VE, VM d'hébergement, super-administration des plateformes applicatives.</li>
+            <li><b>Supervision &amp; SIEM (Wazuh)</b> : déploiement complet (serveurs + agents), règles de détection, corrélation des logs.</li>
+            <li><b>IAM &amp; Microsoft 365</b> : gestion des identités, cycle de vie utilisateurs, politiques de mots de passe, OpenVPN.</li>
+            <li><b>Support IT N1/N2/N3</b> &amp; sensibilisation aux bonnes pratiques de sécurité.</li>
+            <li><b>Audits de sécurité</b> techniques (applications web &amp; infrastructures).</li>
+          </ul>
         </div>
         <div class="item reveal">
-          <div class="when" data-fr="Fév. — Mai 2026" data-en="Feb — May 2026">Fév. — Mai 2026</div>
-          <h3 data-fr="Stage professionnel — Sécurité SI &amp; Réseaux" data-en="Professional internship — IT &amp; Network Security">Stage professionnel — Sécurité SI &amp; Réseaux</h3>
-          <div class="org">Port Autonome de Cotonou (PAC)</div>
-          <p data-fr="Stage au sein de la Direction Générale : administration et sécurité des systèmes et réseaux informatiques." data-en="Internship at the General Management: administration and security of IT systems and networks.">Stage au sein de la Direction Générale : administration et sécurité des systèmes et réseaux informatiques.</p>
+          <div class="when">02/2026 — 05/2026 · Cotonou</div>
+          <h3 data-fr="Stagiaire Cyber Analyste (Blue Team)" data-en="Cyber Analyst Intern (Blue Team)">Stagiaire Cyber Analyste (Blue Team)</h3>
+          <div class="org">Port Autonome de Cotonou</div>
+          <ul>
+            <li><b>PAM</b> : suivi de l'installation et configuration de la solution <b>Wallix</b> (accès critiques).</li>
+            <li><b>Analyse de menaces &amp; réponse à incident</b> : détection d'un <b>phishing</b> réel, investigation via <b>VirusTotal</b>, examen des <b>headers SMTP</b>, liens et pièces jointes.</li>
+            <li><b>Reporting d'incident</b> : rapports d'analyse technique + recommandations.</li>
+            <li><b>Surveillance SIEM</b> : monitoring et corrélation sur <b>LogRhythm</b> (alarmes, tableaux de bord).</li>
+            <li><b>Gestion des vulnérabilités</b> : scans, priorisation des risques, rapports de remédiation.</li>
+          </ul>
         </div>
         <div class="item reveal">
-          <div class="when" data-fr="2025 · Formation" data-en="2025 · Education">2025 · Formation</div>
-          <h3 data-fr="Licence Professionnelle — Sécurité des Systèmes &amp; Réseaux (SSRI)" data-en="Professional Bachelor's — Systems &amp; Network Security (SSRI)">Licence Professionnelle — Sécurité des Systèmes &amp; Réseaux (SSRI)</h3>
-          <div class="org" data-fr="Institut Universitaire Les Cours Sonou (LCS) — Calavi" data-en="Les Cours Sonou University Institute (LCS) — Calavi">Institut Universitaire Les Cours Sonou (LCS) — Calavi</div>
-          <p data-fr="BAC+3, mention Bien (180 ECTS). Spécialité sécurité et administration des systèmes et réseaux." data-en="3-year degree, honors (180 ECTS). Specialty in security and administration of systems and networks.">BAC+3, mention Bien (180 ECTS). Spécialité sécurité et administration des systèmes et réseaux.</p>
+          <div class="when">02/2025 — 05/2025 · Sakété</div>
+          <h3 data-fr="Stagiaire Sécurité des Systèmes &amp; Réseaux" data-en="Systems &amp; Network Security Intern">Stagiaire Sécurité des Systèmes &amp; Réseaux</h3>
+          <div class="org">IBK-TicMaster</div>
+          <ul>
+            <li><b>Audit de sécurité</b> : tests d'intrusion (Pentest) sur infrastructures locales.</li>
+            <li><b>Sécurisation applicative</b> : mise en place de l'authentification à deux facteurs (<b>2FA</b>).</li>
+            <li><b>Infrastructure réseau</b> : déploiement d'équipements (switches, routeurs), segmentation.</li>
+            <li><b>Support &amp; maintenance</b> N1/N2, durcissement (hardening) des postes.</li>
+          </ul>
+        </div>
+        <div class="item reveal">
+          <div class="when">2023 — <span data-fr="aujourd'hui" data-en="present">aujourd'hui</span></div>
+          <h3 data-fr="Développeur Web — Freelance" data-en="Web Developer — Freelance">Développeur Web — Freelance</h3>
+          <div class="org">Freelance</div>
+          <ul>
+            <li>Développement de sites web <b>dynamiques et sécurisés</b>.</li>
+            <li>Optimisation des performances et de la sécurité applicative.</li>
+            <li>Mise en place de bonnes pratiques de sécurité.</li>
+          </ul>
+        </div>
+        <div class="item reveal">
+          <div class="when">06/2019 — 08/2019 · Bohicon</div>
+          <h3 data-fr="Stagiaire Administration Réseau &amp; Système" data-en="Network &amp; System Administration Intern">Stagiaire Administration Réseau &amp; Système</h3>
+          <div class="org">Business Center</div>
+          <ul>
+            <li><b>Active Directory</b> : comptes, groupes de sécurité, stratégies de groupe (GPO).</li>
+            <li><b>Windows Server</b> : installation, configuration et durcissement des rôles.</li>
+            <li><b>Infrastructure LAN</b> : conception, segmentation, adressage IP statique.</li>
+            <li><b>Maintenance &amp; support</b> : diagnostic et résolution d'incidents.</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROJECTS -->
+  <!-- FORMATION -->
+  <section id="edu">
+    <div class="wrap">
+      <div class="cmd reveal" data-fr="cat formation.md" data-en="cat education.md">cat formation.md</div>
+      <h2 class="sec reveal" data-fr="Formation" data-en="Education">Formation</h2>
+      <div class="tl">
+        <div class="item reveal"><div class="when">2025 · Abomey-Calavi</div><h3 data-fr="Licence — Sécurité des Systèmes &amp; Réseaux Informatiques (SSRI)" data-en="Bachelor's — Information Systems &amp; Network Security (SSRI)">Licence — Sécurité des Systèmes &amp; Réseaux Informatiques (SSRI)</h3><div class="org" data-fr="Institut Les Cours Sonou (LCS) · Mention Bien" data-en="Les Cours Sonou Institute (LCS) · Honors">Institut Les Cours Sonou (LCS) · Mention Bien</div></div>
+        <div class="item reveal"><div class="when">09/2021 — 09/2022 · Abomey-Calavi</div><h3 data-fr="Technicien en Réseau" data-en="Network Technician">Technicien en Réseau</h3><div class="org">CFP IMPACT-ACTION</div></div>
+        <div class="item reveal"><div class="when">2022 · Akassato</div><h3 data-fr="Diplôme — Installation &amp; Maintenance Informatique" data-en="Diploma — IT Installation &amp; Maintenance">Diplôme — Installation &amp; Maintenance Informatique</h3><div class="org" data-fr="Lycée Technique Sino-Béninois" data-en="Sino-Beninese Technical High School">Lycée Technique Sino-Béninois</div></div>
+        <div class="item reveal"><div class="when">2017 · Abomey</div><h3 data-fr="Brevet d'Études du Premier Cycle (BEPC)" data-en="Lower secondary diploma (BEPC)">Brevet d'Études du Premier Cycle (BEPC)</h3><div class="org">CEG1 Abomey</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETS / HOME LABS -->
   <section id="projects">
     <div class="wrap">
-      <div class="kick cmd reveal" data-fr="ls projets/" data-en="ls projects/">ls projets/</div>
-      <h2 class="sec reveal" data-fr="Projets" data-en="Projects">Projets</h2>
-      <p class="sub reveal" data-fr="Projets conçus et mis en production (descriptions volontairement générales)." data-en="Projects designed and shipped (kept intentionally general).">Projets conçus et mis en production (descriptions volontairement générales).</p>
+      <div class="cmd reveal" data-fr="ls projets-soc-labs/" data-en="ls soc-labs/">ls projets-soc-labs/</div>
+      <h2 class="sec reveal" data-fr="Projets SOC &amp; Home Labs" data-en="SOC Projects &amp; Home Labs">Projets SOC &amp; Home Labs</h2>
       <div class="projects">
-        <article class="card reveal"><div class="tag" data-fr="Sécurité" data-en="Security">Sécurité</div><h3 data-fr="SIEM &amp; SOC d'entreprise" data-en="Enterprise SIEM &amp; SOC">SIEM &amp; SOC d'entreprise</h3><p data-fr="SIEM Wazuh multi-agents : détection, règles sur mesure, réponse active (bannissement auto), threat hunting et SOC (TheHive/Cortex). Rapports hebdomadaires automatisés." data-en="Multi-agent Wazuh SIEM: detection, custom rules, active response (auto-banning), threat hunting and SOC (TheHive/Cortex). Automated weekly reporting.">SIEM Wazuh multi-agents : détection, règles sur mesure, réponse active (bannissement auto), threat hunting et SOC (TheHive/Cortex). Rapports hebdomadaires automatisés.</p><div class="stack"><span>Wazuh</span><span>Suricata</span><span>TheHive</span><span>Python</span></div></article>
-        <article class="card reveal"><div class="tag" data-fr="Réseau" data-en="Network">Réseau</div><h3 data-fr="Infrastructure réseau multi-sites" data-en="Multi-site network infrastructure">Infrastructure réseau multi-sites</h3><p data-fr="Interconnexion de sites via VPN maillé (WireGuard/OpenVPN), segmentation VLAN, routeurs MikroTik, portails captifs et accès distant sécurisé sur liaisons variées." data-en="Sites interconnected over a mesh VPN (WireGuard/OpenVPN), VLAN segmentation, MikroTik routers, captive portals and secure remote access over mixed links.">Interconnexion de sites via VPN maillé (WireGuard/OpenVPN), segmentation VLAN, routeurs MikroTik, portails captifs et accès distant sécurisé sur liaisons variées.</p><div class="stack"><span>MikroTik</span><span>WireGuard</span><span>VLAN</span></div></article>
-        <article class="card reveal"><div class="tag" data-fr="Développement" data-en="Development">Développement</div><h3 data-fr="Applications métier web" data-en="Business web apps">Applications métier web</h3><p data-fr="Conception et maintenance d'applications internes (RH &amp; paie, stock, helpdesk, parapheur électronique) en Laravel et Node.js, avec SSO Microsoft 365." data-en="Design and maintenance of internal apps (HR &amp; payroll, inventory, helpdesk, e-signature) in Laravel and Node.js, with Microsoft 365 SSO.">Conception et maintenance d'applications internes (RH &amp; paie, stock, helpdesk, parapheur électronique) en Laravel et Node.js, avec SSO Microsoft 365.</p><div class="stack"><span>Laravel</span><span>Node.js</span><span>SSO M365</span></div></article>
-        <article class="card reveal"><div class="tag">IA</div><h3 data-fr="Assistant IA interne" data-en="Internal AI assistant">Assistant IA interne</h3><p data-fr="Copilote documentaire multi-LLM (Claude, GPT, Gemini) connecté aux documents et applications internes via Microsoft Graph, avec contrôle d'accès par utilisateur." data-en="Multi-LLM documentary copilot (Claude, GPT, Gemini) connected to internal documents and apps via Microsoft Graph, with per-user access control.">Copilote documentaire multi-LLM (Claude, GPT, Gemini) connecté aux documents et applications internes via Microsoft Graph, avec contrôle d'accès par utilisateur.</p><div class="stack"><span>Node.js</span><span>LLM API</span><span>MS Graph</span></div></article>
-        <article class="card reveal"><div class="tag" data-fr="Systèmes" data-en="Systems">Systèmes</div><h3 data-fr="Automatisation &amp; sauvegardes" data-en="Automation &amp; backups">Automatisation &amp; sauvegardes</h3><p data-fr="Chaînes de sauvegarde automatisées vers le cloud, déploiement continu des applications, supervision et alerting — scripts Bash/Python et conteneurs Docker." data-en="Automated cloud backup pipelines, continuous app deployment, monitoring and alerting — Bash/Python scripts and Docker containers.">Chaînes de sauvegarde automatisées vers le cloud, déploiement continu des applications, supervision et alerting — scripts Bash/Python et conteneurs Docker.</p><div class="stack"><span>Docker</span><span>Bash</span><span>Cron</span></div></article>
-        <article class="card reveal"><div class="tag" data-fr="Plateformes" data-en="Platforms">Plateformes</div><h3 data-fr="Plateformes web (e-santé / e-learning)" data-en="Web platforms (e-health / e-learning)">Plateformes web (e-santé / e-learning)</h3><p data-fr="Mise en ligne et exploitation de plateformes (formation en ligne, rendez-vous, projets participatifs, intranet) sur WordPress et stacks sur mesure, hébergement et sécurisation inclus." data-en="Launched and operated platforms (e-learning, booking, participatory projects, intranet) on WordPress and custom stacks, hosting and hardening included.">Mise en ligne et exploitation de plateformes (formation en ligne, rendez-vous, projets participatifs, intranet) sur WordPress et stacks sur mesure, hébergement et sécurisation inclus.</p><div class="stack"><span>WordPress</span><span>PHP</span><span>Linux</span></div></article>
-        <article class="card reveal"><div class="tag">CTF</div><h3 data-fr="CTF &amp; challenges sécurité" data-en="CTF &amp; security challenges">CTF &amp; challenges sécurité</h3><p data-fr="Participation à des compétitions de cybersécurité sur la plateforme &lt;a href=&quot;https://hackerlab.bj&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;hackerlab.bj&lt;/a&gt; : exploitation web, réseau, forensics, crypto et OSINT — pour entretenir et prouver mes compétences offensives et défensives." data-en="Participation in cybersecurity competitions on the &lt;a href=&quot;https://hackerlab.bj&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;hackerlab.bj&lt;/a&gt; platform: web exploitation, network, forensics, crypto and OSINT — to sharpen and prove offensive and defensive skills.">Participation à des compétitions de cybersécurité sur la plateforme <a href="https://hackerlab.bj" target="_blank" rel="noopener">hackerlab.bj</a> : exploitation web, réseau, forensics, crypto et OSINT.</p><div class="stack"><span>hackerlab.bj</span><span>Web</span><span>Forensics</span><span>OSINT</span></div></article>
+        <article class="card reveal"><div class="tag">Blue Team · Forensics</div><h3 data-fr="Investigation SOC — Blue Teamer Mock Exam" data-en="SOC Investigation — Blue Teamer Mock Exam">Investigation SOC — Blue Teamer Mock Exam</h3><ul><li>Analyse d'un processus IIS compromis (1ʳᵉ commande de l'attaquant).</li><li>Détection &amp; décompte des commandes de reconnaissance.</li><li>Persistance &amp; forensic : comptes malveillants + Event ID Windows.</li><li>Investigation RDP : IP source &amp; heure (UTC) de la connexion frauduleuse.</li></ul><div class="stack"><span>Windows Event Logs</span><span>Forensics</span><span>RDP</span></div></article>
+        <article class="card reveal"><div class="tag">SIEM · SOC</div><h3>Lab SIEM &amp; SOC — Wazuh</h3><ul><li>Déploiement complet (Manager, Indexer, Dashboard).</li><li>Centralisation &amp; corrélation des logs systèmes et sécurité.</li><li>Détection brute force (SSH/RDP) et scans réseau.</li><li>Réponses automatiques &amp; workflows SOC.</li></ul><div class="stack"><span>Wazuh</span><span>Linux</span><span>Active Response</span></div></article>
+        <article class="card reveal"><div class="tag">SIEM</div><h3>Lab SIEM — Splunk Enterprise</h3><ul><li>Installation &amp; configuration de Splunk sur Ubuntu.</li><li>Ingestion de logs, dashboards interactifs &amp; alertes.</li><li>Scénarios SOC : brute force SSH/RDP, corrélation d'événements.</li><li>Workflows de réponse aux incidents &amp; monitoring continu.</li></ul><div class="stack"><span>Splunk</span><span>Ubuntu</span><span>Dashboards</span></div></article>
+        <article class="card reveal"><div class="tag" data-fr="Réseau · VPN" data-en="Network · VPN">Réseau · VPN</div><h3 data-fr="VPN sécurisé — pfSense &amp; OpenVPN" data-en="Secure VPN — pfSense &amp; OpenVPN">VPN sécurisé — pfSense &amp; OpenVPN</h3><ul><li>Infrastructure VPN d'accès distant (projet de Licence).</li><li>Gestion des certificats (PKI).</li><li>Règles de pare-feu &amp; segmentation réseau.</li><li>Supervision des connexions &amp; analyse des logs.</li></ul><div class="stack"><span>pfSense</span><span>OpenVPN</span><span>PKI</span></div></article>
+        <article class="card reveal"><div class="tag" data-fr="Détection" data-en="Detection">Détection</div><h3>Lab IDS/IPS — Suricata &amp; Zeek</h3><ul><li>Détection &amp; analyse de trafic réseau malveillant.</li><li>Simulation d'attaques : scans, brute force, DoS.</li></ul><div class="stack"><span>Suricata</span><span>Zeek</span><span>PCAP</span></div></article>
+        <article class="card reveal"><div class="tag">Phishing · Email</div><h3 data-fr="Projet Phishing — simulation d'attaques" data-en="Phishing project — attack simulation">Projet Phishing — simulation d'attaques</h3><ul><li>Simulation d'attaques phishing (emails &amp; faux portails).</li><li>Analyse des comportements utilisateurs.</li><li>Détection via SIEM &amp; corrélation d'événements.</li><li>Renforcement email : SPF, DKIM, DMARC.</li></ul><div class="stack"><span>SPF/DKIM/DMARC</span><span>SIEM</span></div></article>
+        <article class="card reveal"><div class="tag">Red Team · Pentest</div><h3 data-fr="Labs Pentest &amp; Red Team (TryHackMe, Root-Me, CTF)" data-en="Pentest &amp; Red Team Labs (TryHackMe, Root-Me, CTF)">Labs Pentest &amp; Red Team (TryHackMe, Root-Me, CTF)</h3><ul><li>Tests d'intrusion Web &amp; Réseau, exploitation OWASP Top 10.</li><li>Scans &amp; énumération (Nmap, Gobuster), exploitation (Metasploit).</li><li>Escalade de privilèges Linux &amp; Windows.</li><li>Rédaction de rapports d'attaque &amp; recommandations.</li></ul><div class="stack"><span>Metasploit</span><span>Burp Suite</span><span>Nmap</span><span>hackerlab.bj</span></div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREATIONS WEB CERRHUD -->
+  <section id="web">
+    <div class="wrap">
+      <div class="cmd reveal" data-fr="ls réalisations-cerrhud/" data-en="ls cerrhud-work/">ls réalisations-cerrhud/</div>
+      <h2 class="sec reveal" data-fr="Créations web — CERRHUD" data-en="Web creations — CERRHUD">Créations web — CERRHUD</h2>
+      <p class="sub reveal" data-fr="Plateformes et applications que j'ai conçues et déployées au CERRHUD (certaines en accès interne / SSO Microsoft 365)." data-en="Platforms and applications I designed and deployed at CERRHUD (some are internal / Microsoft 365 SSO).">Plateformes et applications que j'ai conçues et déployées au CERRHUD (certaines en accès interne / SSO Microsoft 365).</p>
+      <div class="projects">
+        <article class="card reveal"><div class="tag" data-fr="Site institutionnel" data-en="Institutional site">Site institutionnel</div><h3>cerrhud.net</h3><ul><li data-fr="Site web &amp; intranet, prise de rendez-vous laboratoire, dépôt de projets participatifs." data-en="Website &amp; intranet, lab appointment booking, participatory project submissions.">Site web &amp; intranet, prise de rendez-vous laboratoire, dépôt de projets participatifs.</li></ul><p style="margin:0 0 14px"><a href="https://cerrhud.net" target="_blank" rel="noopener">→ cerrhud.net</a></p><div class="stack"><span>WordPress</span><span>PHP</span></div></article>
+        <article class="card reveal"><div class="tag">E-learning</div><h3 data-fr="Formation PEAS" data-en="PEAS Training">Formation PEAS</h3><ul><li data-fr="Plateforme de formation en ligne : parcours, quiz, suivi et attestation téléchargeable." data-en="Online training platform: modules, quizzes, tracking and downloadable certificate.">Plateforme de formation en ligne : parcours, quiz, suivi et attestation téléchargeable.</li></ul><p style="margin:0 0 14px"><a href="https://formation-peas.cerrhud.net" target="_blank" rel="noopener">→ formation-peas.cerrhud.net</a></p><div class="stack"><span>HTML/JS</span><span>PHP</span></div></article>
+        <article class="card reveal"><div class="tag" data-fr="Portail SSO" data-en="SSO Portal">Portail SSO</div><h3 data-fr="Portail d'applications" data-en="Applications portal">Portail d'applications</h3><ul><li data-fr="Hub d'accès unifié aux applications internes avec authentification Microsoft 365." data-en="Unified access hub to internal applications with Microsoft 365 authentication.">Hub d'accès unifié aux applications internes avec authentification Microsoft 365.</li></ul><p style="margin:0 0 14px"><a href="https://portail.cerrhud.net" target="_blank" rel="noopener">→ portail.cerrhud.net</a></p><div class="stack"><span>PHP</span><span>SSO M365</span></div></article>
+        <article class="card reveal"><div class="tag" data-fr="Assistant IA" data-en="AI Assistant">Assistant IA</div><h3>ZeusIA</h3><ul><li data-fr="Copilote documentaire interne multi-LLM connecté aux données CERRHUD (accès SSO)." data-en="Internal multi-LLM documentary copilot connected to CERRHUD data (SSO access).">Copilote documentaire interne multi-LLM connecté aux données CERRHUD (accès SSO).</li></ul><p style="margin:0 0 14px"><a href="https://ia.cerrhud.net" target="_blank" rel="noopener">→ ia.cerrhud.net</a></p><div class="stack"><span>Node.js</span><span>LLM</span><span>MS Graph</span></div></article>
       </div>
     </div>
   </section>
@@ -230,17 +317,17 @@
   <!-- CONTACT -->
   <section id="contact">
     <div class="wrap">
-      <div class="kick cmd reveal">./contact</div>
+      <div class="cmd reveal">./contact</div>
       <h2 class="sec reveal" data-fr="Travaillons ensemble" data-en="Let's work together">Travaillons ensemble</h2>
-      <p class="sub reveal" data-fr="Un projet d'infrastructure, de sécurité ou de développement ? Écrivez-moi." data-en="An infrastructure, security or development project? Reach out.">Un projet d'infrastructure, de sécurité ou de développement ? Écrivez-moi.</p>
       <div class="term reveal">
         <div class="bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>contact — bash</span></div>
         <div class="body">
           <div class="p">whoami</div>
-          <div class="o">Prince HOULONON · <span data-fr="Ingénieur Sécurité des Systèmes &amp; Réseaux" data-en="Systems &amp; Network Security Engineer">Ingénieur Sécurité des Systèmes &amp; Réseaux</span></div>
+          <div class="o">Prince HOULONON · SOC Analyst · Blue Team &amp; Red Team</div>
           <div class="p">cat contact.json</div>
           <div class="o">{</div>
           <div class="o">&nbsp;&nbsp;<span class="k">"email"</span>: "<a href="mailto:houlononprince@gmail.com">houlononprince@gmail.com</a>",</div>
+          <div class="o">&nbsp;&nbsp;<span class="k">"tel"</span>: "<a href="tel:+2290165606846">+229 01 65 60 68 46</a>",</div>
           <div class="o">&nbsp;&nbsp;<span class="k">"github"</span>: "<a href="https://github.com/Hans22900" target="_blank" rel="noopener">github.com/Hans22900</a>",</div>
           <div class="o">&nbsp;&nbsp;<span class="k">"linkedin"</span>: "<a href="https://www.linkedin.com/in/prince-houlonon/" target="_blank" rel="noopener">linkedin.com/in/prince-houlonon</a>",</div>
           <div class="o">&nbsp;&nbsp;<span class="k">"location"</span>: "Cotonou, Bénin"</div>
@@ -248,38 +335,31 @@
           <div class="p"><span style="color:var(--acc)">_</span></div>
         </div>
       </div>
-      <div class="draft" data-fr="// LinkedIn ✓ · Reste à ajouter : e-mail pro, certifications et résultats CTF — envoie-les-moi." data-en="// LinkedIn ✓ · Still to add: professional email, certifications and CTF results — send them over.">// LinkedIn ✓ · Reste à ajouter : e-mail pro, certifications et résultats CTF — envoie-les-moi.</div>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="wrap" style="display:flex;justify-content:space-between;width:100%;flex-wrap:wrap;gap:10px">
-    <span>© <span id="yr"></span> Prince HOULONON</span>
-    <span>built with care · v1.0</span>
+  <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;align-items:center">
+    <span class="langline"><span data-fr="Français : courant" data-en="French: fluent">Français : courant</span> · <span data-fr="Anglais : intermédiaire (B2)" data-en="English: intermediate (B2)">Anglais : intermédiaire (B2)</span></span>
+    <span>© <span id="yr"></span> Prince HOULONON · v2.0</span>
   </div>
 </footer>
 
 <script>
   document.documentElement.classList.add('js');
-  document.getElementById('yr').textContent = new Date().getFullYear();
-  // i18n
-  (function(){
-    var btn=document.getElementById('lang'),lang='fr';
+  document.getElementById('yr').textContent=new Date().getFullYear();
+  (function(){var btn=document.getElementById('lang'),lang='fr';
     function apply(l){lang=l;document.documentElement.lang=l;
       document.querySelectorAll('[data-fr]').forEach(function(el){var v=el.getAttribute('data-'+l);if(v!==null)el.innerHTML=v;});
       btn.textContent=(l==='fr')?'EN':'FR';try{localStorage.setItem('pf_lang',l);}catch(e){}}
     btn.addEventListener('click',function(){apply(lang==='fr'?'en':'fr');});
-    var s;try{s=localStorage.getItem('pf_lang');}catch(e){}if(s==='en')apply('en');
-  })();
-  // reveal on scroll
-  (function(){
-    if(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+    var s;try{s=localStorage.getItem('pf_lang');}catch(e){}if(s==='en')apply('en');})();
+  (function(){if(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches)return;
     var els=document.querySelectorAll('.reveal');
     if(!('IntersectionObserver'in window)){els.forEach(function(e){e.classList.add('in');});return;}
-    var io=new IntersectionObserver(function(ents){ents.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.12});
-    els.forEach(function(e){io.observe(e);});
-  })();
+    var io=new IntersectionObserver(function(ents){ents.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.1});
+    els.forEach(function(e){io.observe(e);});})();
 </script>
 </body>
 </html>
