@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prince HOULONON — Infrastructure & Cybersécurité</title>
+<meta name="description" content="Portfolio de Prince HOULONON — Ingénieur Infrastructure & Cybersécurité : SIEM/SOC, réseau, développement web, systèmes & cloud.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff; --surface:#f6f8fb; --surface2:#eef2f7; --line:#e3e8ef;
+    --ink:#131722; --ink2:#3a4356; --muted:#6b7585;
+    --accent:#2457d6; --accent-ink:#1b43a6; --accent-soft:#e8efff;
+    --radius:14px; --max:1080px;
+    --shadow:0 1px 2px rgba(19,23,34,.04), 0 8px 24px rgba(19,23,34,.06);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+  .mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.86);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;gap:18px;height:62px}
+  .brand{font-weight:800;letter-spacing:-.02em;font-size:1.05rem}
+  .brand span{color:var(--accent)}
+  .nav .links{margin-left:auto;display:flex;gap:22px;align-items:center}
+  .nav .links a{color:var(--ink2);font-weight:500;font-size:.94rem}
+  .nav .links a:hover{color:var(--accent);text-decoration:none}
+  .langbtn{border:1px solid var(--line);background:var(--surface);color:var(--ink2);font:600 .82rem Inter;padding:6px 10px;border-radius:999px;cursor:pointer;letter-spacing:.03em}
+  .langbtn:hover{border-color:var(--accent);color:var(--accent)}
+  @media(max-width:760px){ .nav .links a:not(.langbtn){display:none} }
+
+  /* Hero */
+  .hero{padding:86px 0 56px;border-bottom:1px solid var(--line)}
+  .eyebrow{font:600 .8rem/1 "JetBrains Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  .hero h1{font-size:clamp(2.1rem,5vw,3.2rem);line-height:1.08;letter-spacing:-.03em;margin:.5em 0 .25em;text-wrap:balance}
+  .hero .role{font-size:clamp(1.05rem,2.4vw,1.35rem);color:var(--ink2);font-weight:600;margin:0}
+  .hero p.lead{max-width:62ch;color:var(--muted);font-size:1.06rem;margin:18px 0 0}
+  .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;font-weight:600;font-size:.95rem;border:1px solid transparent}
+  .btn.primary{background:var(--accent);color:#fff}
+  .btn.primary:hover{background:var(--accent-ink);text-decoration:none}
+  .btn.ghost{background:var(--surface);color:var(--ink);border-color:var(--line)}
+  .btn.ghost:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+
+  /* Sections */
+  section{padding:64px 0}
+  section + section{border-top:1px solid var(--line)}
+  .kicker{font:600 .8rem/1 "JetBrains Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  h2.sec{font-size:clamp(1.5rem,3.4vw,2rem);letter-spacing:-.02em;margin:.4em 0 .1em}
+  .sec-sub{color:var(--muted);margin:0 0 30px;max-width:60ch}
+
+  /* About */
+  .about-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:40px;align-items:start}
+  .about p{color:var(--ink2);margin:0 0 14px}
+  .facts{display:grid;gap:12px}
+  .fact{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px}
+  .fact .k{font:600 .72rem "JetBrains Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .fact .v{font-weight:600;color:var(--ink)}
+  @media(max-width:760px){ .about-grid{grid-template-columns:1fr} }
+
+  /* Skills */
+  .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .skill{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px}
+  .skill h3{margin:0 0 12px;font-size:1.05rem;display:flex;align-items:center;gap:10px}
+  .skill h3 .dot{width:9px;height:9px;border-radius:3px;background:var(--accent)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{background:#fff;border:1px solid var(--line);color:var(--ink2);font:500 .85rem Inter;padding:5px 11px;border-radius:999px}
+  @media(max-width:760px){ .skills{grid-template-columns:1fr} }
+
+  /* Projects */
+  .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;transition:border-color .15s,transform .05s,box-shadow .15s}
+  .card:hover{border-color:#cfd9e8;box-shadow:var(--shadow)}
+  .card .tag{font:600 .72rem "JetBrains Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+  .card h3{margin:8px 0 8px;font-size:1.12rem;letter-spacing:-.01em}
+  .card p{margin:0 0 14px;color:var(--ink2);font-size:.96rem}
+  .card .stack{margin-top:auto;display:flex;flex-wrap:wrap;gap:6px}
+  .card .stack span{font:500 .78rem "JetBrains Mono",monospace;color:var(--muted);background:#fff;border:1px solid var(--line);padding:3px 8px;border-radius:7px}
+  @media(max-width:760px){ .projects{grid-template-columns:1fr} }
+
+  /* Experience */
+  .timeline{display:grid;gap:4px}
+  .tl{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:18px 0;border-top:1px solid var(--line)}
+  .tl:first-child{border-top:0}
+  .tl .when{font:600 .85rem "JetBrains Mono",monospace;color:var(--muted);padding-top:2px}
+  .tl h3{margin:0 0 4px;font-size:1.05rem}
+  .tl .org{color:var(--accent);font-weight:600;font-size:.92rem}
+  .tl p{margin:8px 0 0;color:var(--ink2);font-size:.95rem}
+  @media(max-width:620px){ .tl{grid-template-columns:1fr;gap:4px} }
+
+  /* Contact */
+  .contact{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:36px;text-align:center}
+  .contact h2{margin:0 0 8px}
+  .contact p{color:var(--muted);margin:0 auto 22px;max-width:46ch}
+  .links-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+  footer{padding:30px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.86rem;text-align:center}
+  .draft{background:#fff7e6;border:1px solid #ffe2a8;color:#8a5a00;border-radius:10px;padding:10px 14px;font-size:.86rem;margin:16px 0 0}
+  [hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <div class="brand">Prince <span>HOULONON</span></div>
+    <nav class="links">
+      <a href="#about" data-fr="À propos" data-en="About">À propos</a>
+      <a href="#skills" data-fr="Compétences" data-en="Skills">Compétences</a>
+      <a href="#projects" data-fr="Projets" data-en="Projects">Projets</a>
+      <a href="#experience" data-fr="Parcours" data-en="Experience">Parcours</a>
+      <a href="#contact" data-fr="Contact" data-en="Contact">Contact</a>
+      <button class="langbtn" id="lang" aria-label="Changer de langue">EN</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" style="border-top:0">
+    <div class="wrap">
+      <div class="eyebrow" data-fr="Cotonou, Bénin · Disponible" data-en="Cotonou, Benin · Available">Cotonou, Bénin · Disponible</div>
+      <h1 data-fr="Je conçois et sécurise des infrastructures informatiques." data-en="I build and secure IT infrastructures.">Je conçois et sécurise des infrastructures informatiques.</h1>
+      <p class="role" data-fr="Ingénieur Infrastructure &amp; Cybersécurité" data-en="Infrastructure &amp; Cybersecurity Engineer">Ingénieur Infrastructure &amp; Cybersécurité</p>
+      <p class="lead" data-fr="Responsable informatique et sécurité : supervision SIEM/SOC, réseaux multi-sites, développement et intégration d'applications web, administration systèmes et cloud. J'automatise, je durcis, et je fais tenir le tout de façon fiable." data-en="IT &amp; security lead: SIEM/SOC monitoring, multi-site networks, web application development and integration, systems and cloud administration. I automate, harden, and keep everything running reliably.">Responsable informatique et sécurité : supervision SIEM/SOC, réseaux multi-sites, développement et intégration d'applications web, administration systèmes et cloud. J'automatise, je durcis, et je fais tenir le tout de façon fiable.</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects" data-fr="Voir mes projets" data-en="View my work">Voir mes projets</a>
+        <a class="btn ghost" href="#contact" data-fr="Me contacter" data-en="Get in touch">Me contacter</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap about">
+      <div class="kicker" data-fr="À propos" data-en="About">À propos</div>
+      <h2 class="sec" data-fr="En quelques mots" data-en="In a few words">En quelques mots</h2>
+      <div class="about-grid">
+        <div>
+          <p data-fr="Je pilote l'ensemble du système d'information d'un centre de recherche en santé : du réseau et des serveurs jusqu'aux applications métier et à leur sécurité. Mon approche est pragmatique — comprendre le besoin, bâtir une solution robuste, l'automatiser et la surveiller." data-en="I run the entire information system of a health research center — from networks and servers to business applications and their security. My approach is pragmatic: understand the need, build something robust, automate it, and monitor it.">Je pilote l'ensemble du système d'information d'un centre de recherche en santé : du réseau et des serveurs jusqu'aux applications métier et à leur sécurité. Mon approche est pragmatique — comprendre le besoin, bâtir une solution robuste, l'automatiser et la surveiller.</p>
+          <p data-fr="J'aime autant déployer un SIEM et chasser les menaces que développer une application Laravel, câbler un VPN maillé entre plusieurs sites, ou intégrer une IA interne. La sécurité est présente à chaque étape, pas après coup." data-en="I enjoy deploying a SIEM and hunting threats as much as building a Laravel app, wiring a mesh VPN across sites, or integrating an internal AI. Security is built in at every step, not bolted on afterward.">J'aime autant déployer un SIEM et chasser les menaces que développer une application Laravel, câbler un VPN maillé entre plusieurs sites, ou intégrer une IA interne. La sécurité est présente à chaque étape, pas après coup.</p>
+        </div>
+        <div class="facts">
+          <div class="fact"><div class="k" data-fr="Localisation" data-en="Location">Localisation</div><div class="v">Cotonou, Bénin</div></div>
+          <div class="fact"><div class="k" data-fr="Domaines" data-en="Focus">Domaines</div><div class="v" data-fr="Cybersécurité · Réseau · Dev · Cloud" data-en="Cybersecurity · Network · Dev · Cloud">Cybersécurité · Réseau · Dev · Cloud</div></div>
+          <div class="fact"><div class="k" data-fr="Langues" data-en="Languages">Langues</div><div class="v" data-fr="Français, Anglais" data-en="French, English">Français, Anglais</div></div>
+          <div class="fact"><div class="k" data-fr="Centres d'intérêt" data-en="Interests">Centres d'intérêt</div><div class="v" data-fr="CTF, veille sécurité, open source" data-en="CTF, security research, open source">CTF, veille sécurité, open source</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="kicker" data-fr="Compétences" data-en="Skills">Compétences</div>
+      <h2 class="sec" data-fr="Ce que je maîtrise" data-en="What I work with">Ce que je maîtrise</h2>
+      <p class="sec-sub" data-fr="Des outils et technologies que j'utilise au quotidien, en production." data-en="Tools and technologies I use day-to-day, in production.">Des outils et technologies que j'utilise au quotidien, en production.</p>
+      <div class="skills">
+        <div class="skill">
+          <h3><span class="dot"></span><span data-fr="Cybersécurité &amp; SOC" data-en="Cybersecurity &amp; SOC">Cybersécurité &amp; SOC</span></h3>
+          <div class="chips">
+            <span class="chip">Wazuh SIEM</span><span class="chip">Suricata IDS</span><span class="chip">TheHive · Cortex</span>
+            <span class="chip" data-fr="Réponse active" data-en="Active response">Réponse active</span><span class="chip" data-fr="Threat hunting" data-en="Threat hunting">Threat hunting</span>
+            <span class="chip" data-fr="Durcissement" data-en="Hardening">Durcissement</span><span class="chip">M365 Security</span><span class="chip">CTF</span>
+          </div>
+        </div>
+        <div class="skill">
+          <h3><span class="dot"></span><span data-fr="Réseau &amp; systèmes" data-en="Network &amp; systems">Réseau &amp; systèmes</span></h3>
+          <div class="chips">
+            <span class="chip">MikroTik / RouterOS</span><span class="chip">WireGuard · OpenVPN</span><span class="chip">VLAN</span>
+            <span class="chip">nginx · Apache</span><span class="chip">CSF · ufw</span><span class="chip">DNS</span><span class="chip">Linux</span><span class="chip">Proxmox</span>
+          </div>
+        </div>
+        <div class="skill">
+          <h3><span class="dot"></span><span data-fr="Développement web" data-en="Web development">Développement web</span></h3>
+          <div class="chips">
+            <span class="chip">PHP · Laravel</span><span class="chip">Node.js</span><span class="chip">React</span><span class="chip">REST API</span>
+            <span class="chip">MySQL · PostgreSQL</span><span class="chip">SSO M365 / Entra</span><span class="chip">Microsoft Graph</span>
+          </div>
+        </div>
+        <div class="skill">
+          <h3><span class="dot"></span><span data-fr="Automatisation &amp; cloud" data-en="Automation &amp; cloud">Automatisation &amp; cloud</span></h3>
+          <div class="chips">
+            <span class="chip">Docker</span><span class="chip">Bash</span><span class="chip">Python</span><span class="chip">cPanel</span>
+            <span class="chip">Git / GitHub</span><span class="chip" data-fr="Sauvegardes" data-en="Backups">Sauvegardes</span><span class="chip">systemd · cron</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="kicker" data-fr="Projets" data-en="Projects">Projets</div>
+      <h2 class="sec" data-fr="Réalisations" data-en="Selected work">Réalisations</h2>
+      <p class="sec-sub" data-fr="Un aperçu de projets conçus et mis en production (descriptions volontairement générales)." data-en="A selection of projects I designed and shipped (kept intentionally general).">Un aperçu de projets conçus et mis en production (descriptions volontairement générales).</p>
+      <div class="projects">
+        <article class="card">
+          <div class="tag" data-fr="Sécurité" data-en="Security">Sécurité</div>
+          <h3 data-fr="SIEM &amp; SOC d'entreprise" data-en="Enterprise SIEM &amp; SOC">SIEM &amp; SOC d'entreprise</h3>
+          <p data-fr="Déploiement d'un SIEM Wazuh multi-agents avec détection, règles sur mesure, réponse active (bannissement automatique), chasse aux menaces et intégration d'un SOC (TheHive/Cortex). Rapports hebdomadaires automatisés." data-en="Deployed a multi-agent Wazuh SIEM with detection, custom rules, active response (auto-banning), threat hunting and a SOC (TheHive/Cortex). Automated weekly reporting.">Déploiement d'un SIEM Wazuh multi-agents avec détection, règles sur mesure, réponse active (bannissement automatique), chasse aux menaces et intégration d'un SOC (TheHive/Cortex). Rapports hebdomadaires automatisés.</p>
+          <div class="stack"><span>Wazuh</span><span>Suricata</span><span>TheHive</span><span>Python</span></div>
+        </article>
+        <article class="card">
+          <div class="tag" data-fr="Réseau" data-en="Network">Réseau</div>
+          <h3 data-fr="Infrastructure réseau multi-sites" data-en="Multi-site network infrastructure">Infrastructure réseau multi-sites</h3>
+          <p data-fr="Interconnexion de plusieurs sites via un VPN maillé (WireGuard/OpenVPN), segmentation VLAN, routeurs MikroTik, portails captifs et accès distant sécurisé — avec des liaisons variées (fibre, Starlink)." data-en="Interconnected several sites over a mesh VPN (WireGuard/OpenVPN), VLAN segmentation, MikroTik routers, captive portals and secure remote access — across mixed links (fiber, Starlink).">Interconnexion de plusieurs sites via un VPN maillé (WireGuard/OpenVPN), segmentation VLAN, routeurs MikroTik, portails captifs et accès distant sécurisé — avec des liaisons variées (fibre, Starlink).</p>
+          <div class="stack"><span>MikroTik</span><span>WireGuard</span><span>VLAN</span></div>
+        </article>
+        <article class="card">
+          <div class="tag" data-fr="Développement" data-en="Development">Développement</div>
+          <h3 data-fr="Applications métier web" data-en="Business web applications">Applications métier web</h3>
+          <p data-fr="Conception, déploiement et maintenance d'applications internes (RH &amp; paie, gestion de stock, helpdesk, parapheur électronique) en Laravel et Node.js, avec authentification unique Microsoft 365." data-en="Designed, deployed and maintained internal apps (HR &amp; payroll, inventory, helpdesk, e-signature) in Laravel and Node.js, with Microsoft 365 single sign-on.">Conception, déploiement et maintenance d'applications internes (RH &amp; paie, gestion de stock, helpdesk, parapheur électronique) en Laravel et Node.js, avec authentification unique Microsoft 365.</p>
+          <div class="stack"><span>Laravel</span><span>Node.js</span><span>SSO M365</span></div>
+        </article>
+        <article class="card">
+          <div class="tag">IA</div>
+          <h3 data-fr="Assistant IA interne" data-en="Internal AI assistant">Assistant IA interne</h3>
+          <p data-fr="Copilote documentaire multi-LLM (Claude, GPT, Gemini) connecté aux documents et applications internes via Microsoft Graph, avec contrôle d'accès par utilisateur et génération de documents." data-en="A multi-LLM documentary copilot (Claude, GPT, Gemini) connected to internal documents and apps via Microsoft Graph, with per-user access control and document generation.">Copilote documentaire multi-LLM (Claude, GPT, Gemini) connecté aux documents et applications internes via Microsoft Graph, avec contrôle d'accès par utilisateur et génération de documents.</p>
+          <div class="stack"><span>Node.js</span><span>LLM API</span><span>MS Graph</span></div>
+        </article>
+        <article class="card">
+          <div class="tag" data-fr="Systèmes" data-en="Systems">Systèmes</div>
+          <h3 data-fr="Automatisation &amp; sauvegardes" data-en="Automation &amp; backups">Automatisation &amp; sauvegardes</h3>
+          <p data-fr="Chaînes de sauvegarde automatisées (bases de données, fichiers) vers le cloud, déploiement continu des applications, supervision et alerting — scripts Bash/Python et conteneurs Docker." data-en="Automated backup pipelines (databases, files) to the cloud, continuous app deployment, monitoring and alerting — Bash/Python scripts and Docker containers.">Chaînes de sauvegarde automatisées (bases de données, fichiers) vers le cloud, déploiement continu des applications, supervision et alerting — scripts Bash/Python et conteneurs Docker.</p>
+          <div class="stack"><span>Docker</span><span>Bash</span><span>Cron</span></div>
+        </article>
+        <article class="card">
+          <div class="tag" data-fr="E-santé / E-learning" data-en="E-health / E-learning">E-santé / E-learning</div>
+          <h3 data-fr="Plateformes en ligne" data-en="Online platforms">Plateformes en ligne</h3>
+          <p data-fr="Mise en ligne et exploitation de plateformes web (formation en ligne, prise de rendez-vous, projets participatifs, intranet) sur WordPress et stacks sur mesure, avec hébergement et sécurisation." data-en="Launched and operated web platforms (e-learning, appointment booking, participatory projects, intranet) on WordPress and custom stacks, including hosting and hardening.">Mise en ligne et exploitation de plateformes web (formation en ligne, prise de rendez-vous, projets participatifs, intranet) sur WordPress et stacks sur mesure, avec hébergement et sécurisation.</p>
+          <div class="stack"><span>WordPress</span><span>PHP</span><span>Linux</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="kicker" data-fr="Parcours" data-en="Experience">Parcours</div>
+      <h2 class="sec" data-fr="Expérience" data-en="Experience">Expérience</h2>
+      <p class="sec-sub" data-fr="À compléter / corriger avec tes dates et intitulés exacts." data-en="To complete / correct with your exact dates and titles.">À compléter / corriger avec tes dates et intitulés exacts.</p>
+      <div class="timeline">
+        <div class="tl">
+          <div class="when">2024 — <span data-fr="aujourd'hui" data-en="present">aujourd'hui</span></div>
+          <div>
+            <h3 data-fr="Responsable Informatique &amp; Cybersécurité" data-en="IT &amp; Cybersecurity Lead">Responsable Informatique &amp; Cybersécurité</h3>
+            <div class="org" data-fr="Centre de recherche en santé — Cotonou" data-en="Health research center — Cotonou">Centre de recherche en santé — Cotonou</div>
+            <p data-fr="Pilotage complet du SI : sécurité (SIEM/SOC), réseau multi-sites, développement et intégration d'applications, administration systèmes/cloud, automatisation et sauvegardes." data-en="End-to-end IT ownership: security (SIEM/SOC), multi-site network, application development and integration, systems/cloud administration, automation and backups.">Pilotage complet du SI : sécurité (SIEM/SOC), réseau multi-sites, développement et intégration d'applications, administration systèmes/cloud, automatisation et sauvegardes.</p>
+          </div>
+        </div>
+        <div class="tl">
+          <div class="when" data-fr="Formation" data-en="Education">Formation</div>
+          <div>
+            <h3 data-fr="Votre diplôme / certification" data-en="Your degree / certification">Votre diplôme / certification</h3>
+            <div class="org" data-fr="Établissement — Année" data-en="Institution — Year">Établissement — Année</div>
+            <p data-fr="À compléter : diplômes, certifications (ex. sécurité, réseau, cloud)." data-en="To complete: degrees, certifications (e.g. security, network, cloud).">À compléter : diplômes, certifications (ex. sécurité, réseau, cloud).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact">
+        <h2 data-fr="Travaillons ensemble" data-en="Let's work together">Travaillons ensemble</h2>
+        <p data-fr="Un projet d'infrastructure, de sécurité ou de développement ? Écrivez-moi." data-en="An infrastructure, security or development project? Get in touch.">Un projet d'infrastructure, de sécurité ou de développement ? Écrivez-moi.</p>
+        <div class="links-row">
+          <a class="btn primary" href="mailto:VOTRE-EMAIL@exemple.com">Email</a>
+          <a class="btn ghost" href="https://github.com/Hans22900" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn ghost" href="https://www.linkedin.com/in/VOTRE-PROFIL" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+        <p class="draft" data-fr="⚠️ Brouillon : remplace l'email et le lien LinkedIn par les tiens, corrige dates, diplômes et projets." data-en="⚠️ Draft: replace the email and LinkedIn link with yours, and correct dates, education and projects.">⚠️ Brouillon : remplace l'email et le lien LinkedIn par les tiens, corrige dates, diplômes et projets.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="yr"></span> Prince HOULONON · <span data-fr="Conçu avec soin." data-en="Crafted with care.">Conçu avec soin.</span></div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  (function(){
+    var btn = document.getElementById('lang');
+    var lang = 'fr';
+    function apply(l){
+      lang = l;
+      document.documentElement.lang = l;
+      document.querySelectorAll('[data-fr]').forEach(function(el){
+        var v = el.getAttribute('data-' + l);
+        if(v !== null) el.innerHTML = v;
+      });
+      btn.textContent = (l === 'fr') ? 'EN' : 'FR';
+      try{ localStorage.setItem('pf_lang', l); }catch(e){}
+    }
+    btn.addEventListener('click', function(){ apply(lang === 'fr' ? 'en' : 'fr'); });
+    var saved; try{ saved = localStorage.getItem('pf_lang'); }catch(e){}
+    if(saved === 'en') apply('en');
+  })();
+</script>
+</body>
+</html>
