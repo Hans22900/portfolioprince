@@ -22,6 +22,7 @@
   @media (prefers-reduced-motion:reduce){html.js .reveal{opacity:1!important;transform:none!important}html{scroll-behavior:auto}}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:"Space Grotesk",system-ui,Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;
     background-image:radial-gradient(1200px 500px at 80% -10%,rgba(52,227,154,.09),transparent 60%),radial-gradient(900px 500px at -10% 10%,rgba(57,198,255,.06),transparent 55%)}
+  #bg{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;display:block;opacity:.7}
   a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
   .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
   .cmd{font-family:"JetBrains Mono",monospace;color:var(--acc);font-size:.78rem;letter-spacing:.08em;margin-bottom:10px}
@@ -118,6 +119,7 @@
 </style>
 </head>
 <body>
+<canvas id="bg" aria-hidden="true"></canvas>
 <header>
   <div class="wrap nav">
     <div class="brand">prince<b>_houlonon</b></div>
@@ -313,7 +315,6 @@
       <p class="sub reveal" data-fr="Plateformes et applications que j'ai conçues et déployées au CERRHUD (certaines en accès interne / SSO Microsoft 365)." data-en="Platforms and applications I designed and deployed at CERRHUD (some are internal / Microsoft 365 SSO).">Plateformes et applications que j'ai conçues et déployées au CERRHUD (certaines en accès interne / SSO Microsoft 365).</p>
       <div class="projects">
         <article class="card reveal"><div class="tag" data-fr="Site institutionnel" data-en="Institutional site">Site institutionnel</div><h3>cerrhud.net</h3><ul><li data-fr="Site web &amp; intranet, prise de rendez-vous laboratoire, dépôt de projets participatifs." data-en="Website &amp; intranet, lab appointment booking, participatory project submissions.">Site web &amp; intranet, prise de rendez-vous laboratoire, dépôt de projets participatifs.</li></ul><p style="margin:0 0 14px"><a href="https://cerrhud.net" target="_blank" rel="noopener">→ cerrhud.net</a></p><div class="stack"><span>WordPress</span><span>PHP</span></div></article>
-        <article class="card reveal"><div class="tag">E-learning</div><h3 data-fr="Formation PEAS" data-en="PEAS Training">Formation PEAS</h3><ul><li data-fr="Plateforme de formation en ligne : parcours, quiz, suivi et attestation téléchargeable." data-en="Online training platform: modules, quizzes, tracking and downloadable certificate.">Plateforme de formation en ligne : parcours, quiz, suivi et attestation téléchargeable.</li></ul><p style="margin:0 0 14px"><a href="https://formation-peas.cerrhud.net" target="_blank" rel="noopener">→ formation-peas.cerrhud.net</a></p><div class="stack"><span>HTML/JS</span><span>PHP</span></div></article>
         <article class="card reveal"><div class="tag" data-fr="Portail SSO" data-en="SSO Portal">Portail SSO</div><h3 data-fr="Portail d'applications" data-en="Applications portal">Portail d'applications</h3><ul><li data-fr="Hub d'accès unifié aux applications internes avec authentification Microsoft 365." data-en="Unified access hub to internal applications with Microsoft 365 authentication.">Hub d'accès unifié aux applications internes avec authentification Microsoft 365.</li></ul><p style="margin:0 0 14px"><a href="https://portail.cerrhud.net" target="_blank" rel="noopener">→ portail.cerrhud.net</a></p><div class="stack"><span>PHP</span><span>SSO M365</span></div></article>
         <article class="card reveal"><div class="tag" data-fr="Assistant IA" data-en="AI Assistant">Assistant IA</div><h3>ZeusIA</h3><ul><li data-fr="Copilote documentaire interne multi-LLM connecté aux données CERRHUD (accès SSO)." data-en="Internal multi-LLM documentary copilot connected to CERRHUD data (SSO access).">Copilote documentaire interne multi-LLM connecté aux données CERRHUD (accès SSO).</li></ul><p style="margin:0 0 14px"><a href="https://ia.cerrhud.net" target="_blank" rel="noopener">→ ia.cerrhud.net</a></p><div class="stack"><span>Node.js</span><span>LLM</span><span>MS Graph</span></div></article>
         <article class="card reveal"><div class="tag" data-fr="Signature électronique" data-en="E-signature">Signature électronique</div><h3 data-fr="Parapheur électronique" data-en="E-signature app">Parapheur électronique</h3><ul><li data-fr="Signature électronique de documents avec chaîne de validation multi-signataires." data-en="Electronic document signing with a multi-signer validation chain.">Signature électronique de documents avec chaîne de validation multi-signataires.</li></ul><p style="margin:0 0 14px"><a href="https://p.cerrhud.net" target="_blank" rel="noopener">→ p.cerrhud.net</a></p><div class="stack"><span>Node.js</span><span>PDF</span><span>SSO M365</span></div></article>
@@ -370,6 +371,18 @@
     if(!('IntersectionObserver'in window)){els.forEach(function(e){e.classList.add('in');});return;}
     var io=new IntersectionObserver(function(ents){ents.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.1});
     els.forEach(function(e){io.observe(e);});})();
+  (function(){var c=document.getElementById('bg');if(!c)return;
+    var ctx=c.getContext('2d'),w=0,h=0,dpr=1,pts=[],MAX=16000,
+        reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
+    function size(){dpr=Math.min(window.devicePixelRatio||1,2);w=window.innerWidth;h=window.innerHeight;c.width=w*dpr;c.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);}
+    function init(){size();var n=Math.round(Math.min(90,Math.max(28,w*h/18000)));pts=[];for(var i=0;i<n;i++)pts.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25});}
+    function render(){ctx.clearRect(0,0,w,h);var i,j;
+      for(i=0;i<pts.length;i++){for(j=i+1;j<pts.length;j++){var a=pts[i],b=pts[j],dx=a.x-b.x,dy=a.y-b.y,d=dx*dx+dy*dy;
+        if(d<MAX){var o=(1-d/MAX)*.28;ctx.strokeStyle='rgba(52,227,154,'+o+')';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}}}
+      for(i=0;i<pts.length;i++){var p=pts[i];ctx.fillStyle='rgba(57,198,255,.55)';ctx.beginPath();ctx.arc(p.x,p.y,1.4,0,6.2832);ctx.fill();}}
+    function tick(){for(var i=0;i<pts.length;i++){var p=pts[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x+=w;else if(p.x>w)p.x-=w;if(p.y<0)p.y+=h;else if(p.y>h)p.y-=h;}render();requestAnimationFrame(tick);}
+    init();if(reduce)render();else requestAnimationFrame(tick);
+    var t;window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(init,180);});})();
 </script>
 </body>
 </html>
