@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hans22900.github.io/portfolioprince/sitemap.xml
